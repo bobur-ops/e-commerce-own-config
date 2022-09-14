@@ -47,6 +47,14 @@
       cursor: pointer;
     }
   }
+  &__addToFavs {
+    padding: 15px 0;
+    cursor: pointer;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
   &__price {
     font-family: 'Eudoxus Sans';
     color: $dark;

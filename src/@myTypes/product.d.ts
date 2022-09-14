@@ -1,4 +1,6 @@
+import ChartStore from 'store/RootStore/ChartStore'
 import rootStore from 'store/RootStore/instance'
+import UserStore from 'store/RootStore/UserStore'
 
 export interface IProduct {
   id: number
@@ -30,5 +32,6 @@ export type ProductContextType = {
 }
 
 export type GlobalContextType = {
-  chartStore: rootStore.chart
+  chartStore: ChartStore
+  userStore: UserStore
 }

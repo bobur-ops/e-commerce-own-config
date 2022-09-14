@@ -7,6 +7,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Bag from '../../assets/img/svg/headerBag.svg'
 import Logo from '../../assets/img/svg/headerLogo.svg'
 import User from '../../assets/img/svg/headerUser.svg'
+import Star from '../../assets/img/svg/star.svg'
 import styles from './Header.module.scss'
 
 const Header = () => {
@@ -44,6 +45,9 @@ const Header = () => {
         </NavLink>
       </ul>
       <div className={styles['header-profile']}>
+        <Link to={APP_ROUTES.FAVORITES}>
+          <img src={Star} alt="star" />
+        </Link>
         <Link to={APP_ROUTES.CHART}>
           <div className={styles['header-cart']}>
             <img src={Bag} alt="bag" />
@@ -54,7 +58,9 @@ const Header = () => {
             ) : null}
           </div>
         </Link>
-        <img src={User} alt="user" />
+        <Link to={APP_ROUTES.PROFILE}>
+          <img src={User} alt="user" />
+        </Link>
       </div>
     </div>
   )

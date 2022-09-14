@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import Star from 'assets/img/svg/star.svg'
+import classNames from 'classnames'
 import { Button, ButtonColor } from 'components/Button'
 import { useGlobalStore } from 'context/GlobalContext'
 import { observer } from 'mobx-react-lite'
@@ -16,7 +18,7 @@ const colors = ['151411', '314443', 'C5A26E', 'D8DBE0']
 
 const ProductInfo: React.FC<Props> = ({ data }) => {
   const [expandDesc, setExpandDesc] = useState(false)
-  const { chartStore } = useGlobalStore()
+  const { chartStore, userStore } = useGlobalStore()
 
   if (!data) return <div className={styles.error}>Data not found</div>
 
@@ -46,6 +48,17 @@ const ProductInfo: React.FC<Props> = ({ data }) => {
           <span onClick={() => setExpandDesc(!expandDesc)}>
             &nbsp; {expandDesc ? ' Hide' : ' Read More'}
           </span>
+        </div>
+        <div
+          onClick={() => userStore.addToFavs(data)}
+          className={classNames(
+            styles['product__addToFavs'],
+            userStore.isProductInFavs(data)
+              ? styles['product__addToFavs--active']
+              : ''
+          )}
+        >
+          <img src={Star} alt="star" />
         </div>
         <div className={styles['product__price']}>${data.price}</div>
         <div className={styles['product-actions']}>

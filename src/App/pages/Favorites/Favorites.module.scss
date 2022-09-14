@@ -1,0 +1,10 @@
+@import 'styles/Variables';
+.favorites {
+  &-title {
+    font-weight: 700;
+    text-align: center;
+    font-size: $text-lg;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+}

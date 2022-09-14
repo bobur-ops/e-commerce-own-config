@@ -20,7 +20,7 @@ import { IChartStore } from './types'
 
 type PrivateFields = '_chartProducts'
 
-const storageItems = JSON.parse(localStorage.chartProducts)
+const storageItems = JSON.parse(localStorage.getItem('chartProducts') || 'null')
 
 export default class ChartStore implements IChartStore, ILocalStore {
   private _chartProducts: CollectionModel<number, IChartProduct> =
@@ -71,9 +71,6 @@ export default class ChartStore implements IChartStore, ILocalStore {
 
   changeProductChart = (product: IChartProduct): void => {
     const products = linearizeCollection(this._chartProducts)
-
-    // eslint-disable-next-line no-console
-    console.log(products.some((el: IChartProduct) => el.id === product.id))
 
     const isProductInList = products.some(
       (el: IChartProduct) => el.id === product.id
