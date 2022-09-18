@@ -1,6 +1,7 @@
 const path = require('path')
 
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 const TsCheckerPlugin = require('fork-ts-checker-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -50,6 +51,7 @@ module.exports = {
       filename: '[name]-[hash].css',
     }),
     new TsCheckerPlugin(),
+    new Dotenv(),
   ].filter(Boolean),
   module: {
     rules: [
@@ -89,6 +91,7 @@ module.exports = {
       api: path.join(srcPath, 'api'),
       assets: path.join(srcPath, 'assets'),
       store: path.join(srcPath, 'store'),
+      lib: path.join(srcPath, 'lib'),
     },
   },
   devServer: {

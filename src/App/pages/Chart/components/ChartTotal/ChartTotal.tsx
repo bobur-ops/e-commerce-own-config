@@ -9,11 +9,13 @@ import styles from './ChartTotal.module.scss'
 type ChartTotalType = {
   totalPrice: number
   productsLength: number
+  checkout(): void
 }
 
 const ChartTotal: React.FC<ChartTotalType> = ({
   totalPrice,
   productsLength,
+  checkout,
 }) => {
   const navigate = useNavigate()
 
@@ -34,7 +36,9 @@ const ChartTotal: React.FC<ChartTotalType> = ({
         <div className={styles['total-field__result']}>${totalPrice}</div>
       </div>
       <div className={styles['total-actions']}>
-        <Button className={styles['total-actions__btn']}>Buy now</Button>
+        <Button className={styles['total-actions__btn']} onClick={checkout}>
+          Buy now
+        </Button>
         <Button
           color={ButtonColor.secondary}
           className={styles['total-actions__btn']}

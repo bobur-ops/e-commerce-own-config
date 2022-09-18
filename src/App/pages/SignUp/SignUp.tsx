@@ -1,11 +1,14 @@
+import React, { useEffect, useState } from 'react'
+
 import axios from 'axios'
 import { Button } from 'components/Button'
 import Input from 'components/Input'
 import { useGlobalStore } from 'context/GlobalContext'
 import { observer } from 'mobx-react-lite'
-import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { Meta } from 'utils/meta'
+
 import styles from './SignUp.module.scss'
 
 const SignUp = () => {
@@ -25,9 +28,6 @@ const SignUp = () => {
       confirmPassword,
     }
     userStore.signUp(data)
-    if (userStore.meta !== Meta.error ?? userStore.meta !== Meta.loading) {
-      navigate('/')
-    }
   }
 
   return (

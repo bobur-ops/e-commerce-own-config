@@ -2,6 +2,8 @@ import classNames from 'classnames'
 import { APP_ROUTES } from 'config/routes'
 import { useGlobalStore } from 'context/GlobalContext'
 import { observer } from 'mobx-react-lite'
+import { BsPerson } from 'react-icons/bs'
+import { FiShoppingCart, FiStar } from 'react-icons/fi'
 import { Link, NavLink } from 'react-router-dom'
 
 import Bag from '../../assets/img/svg/headerBag.svg'
@@ -45,22 +47,31 @@ const Header = () => {
         </NavLink>
       </ul>
       <div className={styles['header-profile']}>
-        <Link to={APP_ROUTES.FAVORITES}>
-          <img src={Star} alt="star" />
-        </Link>
-        <Link to={APP_ROUTES.CHART}>
+        <NavLink
+          className={({ isActive }) => `${isActive && styles.active}`}
+          to={APP_ROUTES.FAVORITES}
+        >
+          <FiStar />
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => `${isActive && styles.active}`}
+          to={APP_ROUTES.CHART}
+        >
           <div className={styles['header-cart']}>
-            <img src={Bag} alt="bag" />
+            <FiShoppingCart />
             {chartStore.totalAmount ? (
               <div className={styles['header-cart__total']}>
                 {chartStore.totalAmount}
               </div>
             ) : null}
           </div>
-        </Link>
-        <Link to={APP_ROUTES.PROFILE}>
-          <img src={User} alt="user" />
-        </Link>
+        </NavLink>
+        <NavLink
+          to={APP_ROUTES.PROFILE}
+          className={({ isActive }) => `${isActive && styles.active}`}
+        >
+          <BsPerson />
+        </NavLink>
       </div>
     </div>
   )

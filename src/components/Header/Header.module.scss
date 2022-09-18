@@ -28,9 +28,18 @@
   &-profile {
     display: flex;
     gap: 32px;
+    svg {
+      color: $dark;
+    }
+    .active svg {
+      color: $green;
+    }
   }
   &-cart {
     position: relative;
+    svg {
+      color: $dark;
+    }
     &__total {
       background: $green;
       width: 20px;
@@ -46,4 +55,7 @@
       right: -12px;
     }
   }
+}
+.active .header-cart svg {
+  color: $green;
 }

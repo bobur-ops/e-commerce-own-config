@@ -9,4 +9,5 @@ export const APP_ROUTES = {
   ARTICLE: '/article',
   ABOUT_US: '/aboutus',
   FAVORITES: '/favorites',
+  SUCCESS: '/success',
 }

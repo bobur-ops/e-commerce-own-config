@@ -7,6 +7,7 @@ import {
   reaction,
   toJS,
 } from 'mobx'
+import toast from 'react-hot-toast'
 import { IChartProduct } from 'store/models/chartProduct'
 import {
   CollectionModel,
@@ -24,8 +25,9 @@ const storageItems = JSON.parse(localStorage.getItem('chartProducts') || 'null')
 
 export default class ChartStore implements IChartStore, ILocalStore {
   private _chartProducts: CollectionModel<number, IChartProduct> =
-    normalizeCollection(storageItems, (listItem) => listItem.id) ||
-    getInitialCollectionModel()
+    storageItems !== null
+      ? normalizeCollection(storageItems, (listItem) => listItem.id)
+      : getInitialCollectionModel()
 
   constructor() {
     makeObservable<ChartStore, PrivateFields>(this, {
@@ -39,6 +41,7 @@ export default class ChartStore implements IChartStore, ILocalStore {
       changeProductChart: action.bound,
       increaseItemCount: action.bound,
       decreaseItemCount: action.bound,
+      clearChart: action.bound,
     })
     reaction(
       () =>
@@ -83,6 +86,8 @@ export default class ChartStore implements IChartStore, ILocalStore {
       updatedList,
       (listItem) => listItem.id
     )
+
+    isProductInList ? toast('Removed From Chart') : toast('Added To Chart')
   }
 
   increaseItemCount = (id: number) => {
@@ -96,6 +101,10 @@ export default class ChartStore implements IChartStore, ILocalStore {
 
   isInChart(id: number): boolean {
     return this.chartProducts.some((el: IChartProduct) => id === el.id)
+  }
+
+  clearChart = (): void => {
+    this._chartProducts = getInitialCollectionModel()
   }
 
   destroy(): void {}

@@ -4,6 +4,7 @@ import {
   getProductsWithLimit,
 } from 'api/fetchApi'
 import { action, computed, makeObservable, observable, runInAction } from 'mobx'
+import toast from 'react-hot-toast'
 import {
   CollectionModel,
   getInitialCollectionModel,
@@ -80,10 +81,8 @@ export default class ProductsStore implements IProductStore, ILocalStore {
 
     try {
       const response = await getProductsWithLimit(this._limit)
-      if (this._length === 0) {
-        const forLength = await getProducts()
-        this._length = forLength.data.length
-      }
+      const forLength = await getProducts()
+      this._length = forLength.data.length
       runInAction(() => {
         if (response.data.length < this._limit) {
           this._hasMore = false
@@ -154,6 +153,8 @@ export default class ProductsStore implements IProductStore, ILocalStore {
           .includes(searchTerm.toString().toLowerCase())
       )
     }
+
+    this._length = newProducts.length
 
     return newProducts
   }

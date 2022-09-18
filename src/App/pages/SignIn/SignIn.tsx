@@ -1,9 +1,12 @@
+import React, { useEffect, useState } from 'react'
+
 import { Button } from 'components/Button'
 import Input from 'components/Input'
 import { useGlobalStore } from 'context/GlobalContext'
-import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { Meta } from 'utils/meta'
+
 import styles from './SignIn.module.scss'
 
 const SignIn = () => {
@@ -18,9 +21,6 @@ const SignIn = () => {
       password,
     }
     userStore.signIn(data)
-    if (userStore.meta !== Meta.error ?? userStore.meta !== Meta.loading) {
-      navigate('/')
-    }
   }
 
   return (

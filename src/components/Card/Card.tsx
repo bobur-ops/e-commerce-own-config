@@ -1,3 +1,4 @@
+import { Button } from 'components/Button'
 import * as React from 'react'
 
 import { Link } from 'react-router-dom'
@@ -14,15 +15,8 @@ type CardProps = {
   id: number
 }
 
-const Card: React.FC<CardProps> = ({
-  image,
-  category,
-  title,
-  content,
-  onClick,
-  subtitle,
-  id,
-}) => {
+const Card: React.FC<CardProps> = (props) => {
+  const { image, category, title, content, onClick, subtitle, id } = props
   return (
     <Link to={`/product/${id}`}>
       <div className={styles.card} onClick={onClick}>

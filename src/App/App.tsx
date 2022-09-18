@@ -4,6 +4,7 @@ import Footer from 'components/Footer/Footer'
 import Header from 'components/Header'
 import { APP_ROUTES } from 'config/routes'
 import { GlobalContextProvider } from 'context/GlobalContext'
+import { Toaster } from 'react-hot-toast'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Chart from './pages/Chart/Chart'
@@ -15,11 +16,13 @@ import Products from './pages/Products'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import Success from './pages/Success/Success'
 
 const App = () => {
   return (
     <GlobalContextProvider>
       <BrowserRouter>
+        <Toaster />
         <Header />
         <Routes>
           <Route path={APP_ROUTES.PRODUCTS} element={<Products />} />
@@ -32,6 +35,7 @@ const App = () => {
           <Route path={APP_ROUTES.SERVICES} element={<Empty />} />
           <Route path={APP_ROUTES.ARTICLE} element={<Empty />} />
           <Route path={APP_ROUTES.ABOUT_US} element={<Empty />} />
+          <Route path={APP_ROUTES.SUCCESS} element={<Success />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

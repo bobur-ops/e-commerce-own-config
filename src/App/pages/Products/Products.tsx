@@ -58,9 +58,6 @@ const Products = () => {
           size={LoaderSize.l}
           loading={productStore.meta === Meta.loading}
         />
-        {!productStore.hasMore && productStore.products.length ? (
-          <div className={styles.error}>You've seen all data</div>
-        ) : null}
       </div>
     </ProductsStoreContext.Provider>
   )
