@@ -15,7 +15,7 @@ const Chart = () => {
       const stripe = await getStripe()
 
       const response = await fetch(
-        'http://localhost:5000/stripe/create-checkout-session',
+        'https://e-commerce-kts.herokuapp.com/stripe/create-checkout-session',
         {
           method: 'POST',
           headers: {

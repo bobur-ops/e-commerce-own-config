@@ -17,8 +17,8 @@ export const signUp = (data: {
   login: string
   password: string
   confirmPassword: string
-}) => API.post('http://localhost:5000/user/signup', data)
+}) => API.post('https://e-commerce-kts.herokuapp.com/user/signup', data)
 export const signIn = (data: { email: string; password: string }) =>
-  API.post('http://localhost:5000/user/signin', data)
+  API.post('https://e-commerce-kts.herokuapp.com/user/signin', data)
 export const addToFavs = (id: string, product: IProductModel) =>
-  API.patch(`http://localhost:5000/user/${id}/addtofavs`, product)
+  API.patch(`https://e-commerce-kts.herokuapp.com/user/${id}/addtofavs`, product)
