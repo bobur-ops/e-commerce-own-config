@@ -20,7 +20,8 @@ const SignIn = () => {
       email,
       password,
     }
-    userStore.signIn(data)
+    await userStore.signIn(data)
+    navigate('/')
   }
 
   return (

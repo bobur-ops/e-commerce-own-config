@@ -44,35 +44,33 @@ export default class UserStore {
   }): Promise<void> => {
     try {
       this._meta = Meta.loading
-      toast.loading('Processing')
+      toast('Processing')
       const response = await signUp(data)
 
       this._meta = Meta.success
       this._user = response.data.result
       localStorage.setItem('user', JSON.stringify(response.data.result))
-      window.location.href = 'http://localhost:3000/'
-      toast(`Logged in as ${response.data.result.login}`)
+      toast.success(`Logged in as ${response.data.result.login}`)
     } catch (error) {
       this._meta = Meta.error
-      toast('Something went wrong')
+      toast.error('Something went wrong')
     }
   }
   signIn = async (data: { email: string; password: string }): Promise<void> => {
     try {
       this._meta = Meta.loading
-      toast.loading('Processing')
+      toast('Processing')
       const response = await signIn(data)
 
       runInAction(() => {
         this._meta = Meta.success
         this._user = response.data.result
         localStorage.setItem('user', JSON.stringify(response.data.result))
-        window.location.href = 'http://localhost:3000/'
-        toast(`Logged in as ${response.data.result.login}`)
+        toast.success(`Logged in as ${response.data.result.login}`)
       })
     } catch (error) {
       this._meta = Meta.error
-      toast('Something went wrong')
+      toast.error('Something went wrong')
     }
   }
 
