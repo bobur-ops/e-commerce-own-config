@@ -1,0 +1,61 @@
+@import 'styles/Variables';
+
+.header {
+  height: 120px;
+  border-bottom: 1px solid $light-gray;
+  &__logo {
+    cursor: pointer;
+  }
+  &-navbar {
+    height: 100%;
+    display: flex;
+    gap: 60px;
+    &__item {
+      list-style: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: $text-sm;
+      color: $dark;
+    }
+    .active .header-navbar__item {
+      border-bottom: 3px solid $green;
+      color: $green;
+    }
+  }
+  &-profile {
+    display: flex;
+    gap: 32px;
+    svg {
+      color: $dark;
+    }
+    .active svg {
+      color: $green;
+    }
+  }
+  &-cart {
+    position: relative;
+    svg {
+      color: $dark;
+    }
+    &__total {
+      background: $green;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      color: $light-gray;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      font-size: 14px;
+      top: -10px;
+      right: -12px;
+    }
+  }
+}
+.active .header-cart svg {
+  color: $green;
+}

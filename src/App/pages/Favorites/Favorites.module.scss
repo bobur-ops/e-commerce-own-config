@@ -1,0 +1,19 @@
+@import 'styles/Variables';
+.favorites {
+  padding-bottom: 50px;
+  &-title {
+    font-weight: 700;
+    text-align: center;
+    font-size: $text-lg;
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+  &-cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.card__button {
+  margin-top: 15px;
+  padding: 10px 20px;
+}
