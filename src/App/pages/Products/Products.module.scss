@@ -43,3 +43,19 @@
   font-weight: 700;
   color: $error;
 }
+
+@media only screen and (max-width: 600px) {
+  .products-top__title {
+    font-size: 45px;
+  }
+  .products-top__subtitle {
+    font-size: 12px;
+  }
+  .products-top {
+    padding: 60px;
+  }
+  .products-list__title {
+    font-size: 18px;
+    gap: 11px;
+  }
+}
