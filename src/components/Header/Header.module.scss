@@ -30,6 +30,8 @@
     gap: 32px;
     svg {
       color: $dark;
+      width: 30px;
+      height: 30px;
     }
     .active svg {
       color: $green;
@@ -52,10 +54,89 @@
       position: absolute;
       font-size: 14px;
       top: -10px;
-      right: -12px;
+      right: -13px;
     }
   }
 }
 .active .header-cart svg {
   color: $green;
+}
+.burger-menu {
+  z-index: 10;
+  position: absolute;
+  overflow: hidden;
+  right: 40px;
+  top: 60px;
+  transition: 0.3s ease-out;
+  padding: 10px 30px;
+  box-shadow: 0px 4px 120px #afadb5;
+  background: white;
+  flex-direction: column;
+  gap: 17px;
+  display: none;
+  &--active {
+    display: flex;
+  }
+  &__item {
+    font-size: $text-md;
+    margin-bottom: 7px;
+    color: $dark;
+    text-align: center;
+  }
+}
+.burger {
+  &-profile {
+    margin-top: 20px;
+    gap: 15px;
+    display: flex;
+    svg {
+      width: 30px;
+      height: 30px;
+      color: $dark;
+    }
+  }
+  &-cart {
+    position: relative;
+    &__total {
+      background: $green;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      color: $light-gray;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      font-size: 14px;
+      top: -10px;
+      right: -13px;
+    }
+  }
+}
+.active svg {
+  color: $green;
+}
+.active .burger-menu__item {
+  color: $green;
+}
+.burger-open {
+  display: none;
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .header-navbar {
+    display: none;
+  }
+  .header-profile {
+    display: none;
+  }
+  .header {
+    height: calculateVw375(72);
+  }
+  .burger-open {
+    display: block;
+  }
 }

@@ -97,14 +97,16 @@ const Search = () => {
           Find Now
         </Button>
       </div>
-      <MultiDropdown
-        options={categories}
-        value={selectedCategories}
-        onChange={(value: Option) => switchCategory(value)}
-        pluralizeOptions={(value: Option | null) =>
-          value === null ? ` Filter` : `${value.value}`
-        }
-      />
+      <div className={styles['search-dropdown']}>
+        <MultiDropdown
+          options={categories}
+          value={selectedCategories}
+          onChange={(value: Option) => switchCategory(value)}
+          pluralizeOptions={(value: Option | null) =>
+            value === null ? ` Filter` : `${value.value}`
+          }
+        />
+      </div>
     </div>
   )
 }

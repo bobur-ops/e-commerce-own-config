@@ -22,17 +22,17 @@ const ChartListItem: React.FC<ChartListItemType> = ({
 }) => {
   return (
     <div className={styles['list-item']}>
-      <Link key={product.id} to={`/product/${product.id}`}>
-        <div className={styles['list-item__info']}>
-          <img
-            src={product.image}
-            alt="product"
-            className={styles['list-item__img']}
-          />
-          <div className={styles['list-item__title']}>{product.title}</div>
-        </div>
-      </Link>
       <div className={styles['list-item__count']}>
+        <Link key={product.id} to={`/product/${product.id}`}>
+          <div className={styles['list-item__info']}>
+            <img
+              src={product.image}
+              alt="product"
+              className={styles['list-item__img']}
+            />
+            <div className={styles['list-item__title']}>{product.title}</div>
+          </div>
+        </Link>
         <Button
           className={styles['count__btn']}
           color={ButtonColor.secondary}

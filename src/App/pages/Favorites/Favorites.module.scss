@@ -11,9 +11,16 @@
   &-cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 .card__button {
   margin-top: 15px;
   padding: 10px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .favorites-cards {
+    justify-content: center;
+  }
 }

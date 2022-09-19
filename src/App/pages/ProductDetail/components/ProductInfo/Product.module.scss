@@ -77,3 +77,16 @@
   color: $error;
   font-weight: 700;
 }
+
+@media only screen and (max-width: 600px) {
+  .product-info {
+    flex-direction: column;
+  }
+  .product-info__side img {
+    width: 327px;
+    height: 327px;
+  }
+  .product__title {
+    font-size: 24px;
+  }
+}

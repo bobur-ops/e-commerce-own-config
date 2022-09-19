@@ -71,3 +71,18 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .list-item__title {
+    display: none;
+  }
+  .list-item {
+    flex-direction: column;
+  }
+  .list-item__info {
+    margin-right: 20px;
+  }
+  .list-item__actions {
+    margin: 0 auto;
+  }
+}

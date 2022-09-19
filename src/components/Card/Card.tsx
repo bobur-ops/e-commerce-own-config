@@ -1,6 +1,6 @@
-import { Button } from 'components/Button'
 import * as React from 'react'
 
+import { Button } from 'components/Button'
 import { Link } from 'react-router-dom'
 
 import styles from './Card.module.scss'
