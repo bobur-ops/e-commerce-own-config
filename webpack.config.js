@@ -41,10 +41,11 @@ module.exports = {
     path: buildPath,
     filename: 'bundle.js',
     publicPath: '/',
+    clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(srcPath, 'index.html'),
+      template: './public/index.html',
     }),
     !isProd && new ReactRefreshWebpackPlugin(),
     new MiniCssExtractPlugin({
