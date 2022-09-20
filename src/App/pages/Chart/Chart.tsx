@@ -11,6 +11,7 @@ const Chart = () => {
   const { chartStore, userStore } = useGlobalStore()
 
   const handleCheckout = async () => {
+    toast.loading('Processing')
     if (userStore.user !== null) {
       const stripe = await getStripe()
 

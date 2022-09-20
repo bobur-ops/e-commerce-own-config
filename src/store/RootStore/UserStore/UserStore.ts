@@ -1,6 +1,7 @@
 import { addToFavs, signIn, signUp } from 'api/fetchApi'
 import { action, computed, makeObservable, observable, runInAction } from 'mobx'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 import { IProductModel } from 'store/models/product'
 import { IUserType } from 'store/models/user'
 import { Meta } from 'utils/meta'
@@ -46,14 +47,15 @@ export default class UserStore {
       this._meta = Meta.loading
       toast('Processing')
       const response = await signUp(data)
-
-      this._meta = Meta.success
-      this._user = response.data.result
-      localStorage.setItem('user', JSON.stringify(response.data.result))
-      toast.success(`Logged in as ${response.data.result.login}`)
-    } catch (error) {
+      runInAction(() => {
+        this._meta = Meta.success
+        this._user = response.data.result
+        localStorage.setItem('user', JSON.stringify(response.data.result))
+        toast.success(`Logged in as ${response.data.result.login}`)
+      })
+    } catch (error: any) {
+      toast.error(error.response.data.message)
       this._meta = Meta.error
-      toast.error('Something went wrong')
     }
   }
   signIn = async (data: { email: string; password: string }): Promise<void> => {
@@ -61,16 +63,15 @@ export default class UserStore {
       this._meta = Meta.loading
       toast('Processing')
       const response = await signIn(data)
-
       runInAction(() => {
         this._meta = Meta.success
         this._user = response.data.result
         localStorage.setItem('user', JSON.stringify(response.data.result))
         toast.success(`Logged in as ${response.data.result.login}`)
       })
-    } catch (error) {
+    } catch (error: any) {
       this._meta = Meta.error
-      toast.error('Something went wrong')
+      toast.error(error.response.data.message)
     }
   }
 

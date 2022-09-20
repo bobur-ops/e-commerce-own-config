@@ -27,8 +27,17 @@ const SignUp = () => {
       password: password,
       confirmPassword,
     }
-    userStore.signUp(data)
+    await userStore.signUp(data)
+    if (userStore.meta !== Meta.loading && userStore.meta !== Meta.error) {
+      navigate('/')
+    }
   }
+
+  const isBtnDisabled =
+    email.length === 0 ||
+    loginValue.length === 0 ||
+    password.length === 0 ||
+    confirmPassword.length === 0
 
   return (
     <div className="container">
@@ -56,6 +65,7 @@ const SignUp = () => {
           <div className={styles['form-field']}>
             <div className={styles['form-field__label']}>Password</div>
             <Input
+              type="password"
               className={styles['form-field__input']}
               value={password}
               onChange={(value) => setPassword(value)}
@@ -66,17 +76,17 @@ const SignUp = () => {
               Confirm the password
             </div>
             <Input
+              type="password"
               className={styles['form-field__input']}
               value={confirmPassword}
               onChange={(value) => setConfirmPassword(value)}
             />
           </div>
-          {userStore.meta === Meta.error ? (
-            <div className={styles['form-error']}>
-              Something went wrong... Try again
-            </div>
-          ) : null}
-          <Button onClick={handleSubmit} className={styles['form-btn']}>
+          <Button
+            disabled={isBtnDisabled}
+            onClick={handleSubmit}
+            className={styles['form-btn']}
+          >
             Sign Up
           </Button>
           <div className={styles['form-extra']}>
